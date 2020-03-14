@@ -137,7 +137,7 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
 
     let templatefileName = type + '.tmpl';
 
-    vscode.workspace.openTextDocument(vscode.extensions.getExtension('jchannon.aspnetzeroextensions').extensionPath + '/templates/' + templatefileName)
+    vscode.workspace.openTextDocument(vscode.extensions.getExtension('ThinkAM.aspnetzeroextensions').extensionPath + '/templates/' + templatefileName)
         .then((doc: vscode.TextDocument) => {
             let text = doc.getText();
             text = text.replace('${namespace}', namespace);
