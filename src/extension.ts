@@ -32,6 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
     //context.subscriptions.push(disposable);
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createClass', createClass));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateCreateDtoClass', generateCreateDtoClass));
+    context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateDtoClass', generateDtoClass));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createInterface', createInterface));
 
     const codeActionProvider = new CodeActionProvider();
@@ -45,6 +46,10 @@ function createClass(args) {
 
 function generateCreateDtoClass(args) {
     promptAndSave(args, 'createDto');
+}
+
+function generateDtoClass(args) {
+    promptAndSave(args, 'dtoClass');
 }
 
 function createInterface(args) {
