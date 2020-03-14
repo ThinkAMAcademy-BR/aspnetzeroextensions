@@ -1,0 +1,20 @@
+using System;
+using Abp.Domain.Repositories;
+using Abp.Application.Services;
+using Abp.Application.Services.Dto;
+
+namespace ${namespace}
+{
+    using Dto;
+
+    public class ${classname}: AsyncCrudAppService<${entityname}, ${entityname}Dto, Guid, PagedResultRequestDto, Create${entityname}Dto, ${entityname}Dto>, I${entityname}AppService
+    {
+        private readonly IRepository<${entityname}, Guid> _${entitynameCamelCase}Repository;    
+
+        public ${entityname}AppService(IRepository<${entityname}, Guid> ${entitynameCamelCase}Repository) 
+            :base(${entitynameCamelCase}Repository)
+        {
+
+        }
+    }
+}

@@ -31,6 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     //context.subscriptions.push(disposable);
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createClass', createClass));
+    context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createClassAppService', createClassAppService));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateCreateDtoClass', generateCreateDtoClass));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateDtoClass', generateDtoClass));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createInterface', createInterface));
@@ -43,6 +44,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 function createClass(args) {
     promptAndSave(args, 'class');
+}
+
+function createClassAppService(args) {
+    promptAndSave(args, 'classAppService');
 }
 
 function generateCreateDtoClass(args) {
@@ -155,17 +160,19 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
             let cursorPosition = findCursorInTemlpate(text);
             text = text.replace('${cursor}', '');
 
-            if (templatefileName === 'interfaceAppService') {
+            if (templatefileName === 'classAppService') {
+                let entityName = filename.replace('AppService', '');
+                text = text.replace(/[${}]/g, '').replace(/entityname/g, entityName);
+                let entityNameCamelCase = entityName.replace(/\w+/g,
+                    function(w){return w[0].toUpperCase() + w.slice(1).toLowerCase();});
+                text = text.replace(/[${}]/g, '').replace(/entitynameCamelCase/g, entityNameCamelCase);
+            } else if (templatefileName === 'interfaceAppService') {
                 let entityName = filename.replace('I', '').replace('AppService', '');
-                text = text.replace(/${entityname}/g, entityName);
-            }
-
-            if (templatefileName === 'createDto') {
+                text = text.replace(/[${}]/g, '').replace(/entityname/g, entityName);
+            } else if (templatefileName === 'createDto') {
                 let entityName = filename.replace('Create', '').replace('Dto', '');
                 text = text.replace('${entityname}', entityName);
-            }
-
-            if (templatefileName === 'dtoClass') {
+            } else if (templatefileName === 'dtoClass') {
                 let entityName = filename.replace('Dto', '');
                 text = text.replace('${entityname}', entityName);
             }
