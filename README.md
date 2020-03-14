@@ -1,8 +1,6 @@
-# ***** *PROJECT NO LONGER UNDER DEVELOPMENT* *****
+# Asp.Net Zero Extensions
 
-# C# Extensions
-
-Welcome to C# Extensions.  This VSCode extension provides extensions to the IDE that will hopefully speed up your development workflow.
+Welcome to Asp.Net Zero Extensions.  This VSCode extension provides extensions to the IDE that will hopefully speed up your development workflow.
 
 ## Features
 
