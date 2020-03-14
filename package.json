@@ -4,7 +4,7 @@
     "description": "Asp.Net Zero IDE Extensions for VSCode",
     "author": "Felipe A. de Almeida",
     "license": "SEE LICENSE IN license.txt",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "publisher": "ThinkAM",
     "engines": {
         "vscode": "^1.5.0"
@@ -21,7 +21,8 @@
         "onCommand:aspnetzeroextensions.createClass",
         "onCommand:aspnetzeroextensions.generateCreateDtoClass",
         "onCommand:aspnetzeroextensions.generateDtoClass",
-        "onCommand:aspnetzeroextensions.createInterface"
+        "onCommand:aspnetzeroextensions.createInterface",
+        "onCommand:aspnetzeroextensions.createInterfaceAppService"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -41,6 +42,10 @@
             {
                 "command": "aspnetzeroextensions.createInterface",
                 "title": "New C# Interface"
+            },
+            {
+                "command": "aspnetzeroextensions.createInterfaceAppService",
+                "title": "New C# Interface App Service"
             }
         ],
         "menus": {
@@ -60,6 +65,10 @@
                 {
                     "group": "navigation@-1",
                     "command": "aspnetzeroextensions.createInterface"
+                },
+                {
+                    "group": "navigation@-1",
+                    "command": "aspnetzeroextensions.createInterfaceAppService"
                 }
             ]
         },

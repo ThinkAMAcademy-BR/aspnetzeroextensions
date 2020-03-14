@@ -34,6 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateCreateDtoClass', generateCreateDtoClass));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateDtoClass', generateDtoClass));
     context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createInterface', createInterface));
+    context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createInterfaceAppService', createInterfaceAppService));
 
     const codeActionProvider = new CodeActionProvider();
     let disposable = vscode.languages.registerCodeActionsProvider(documentSelector, codeActionProvider);
@@ -54,6 +55,10 @@ function generateDtoClass(args) {
 
 function createInterface(args) {
     promptAndSave(args, 'interface');
+}
+
+function createInterfaceAppService(args) {
+    promptAndSave(args, 'interfaceAppService');
 }
 
 function promptAndSave(args, templatetype: string) {
@@ -143,12 +148,28 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
     let templatefileName = type + '.tmpl';
 
     vscode.workspace.openTextDocument(vscode.extensions.getExtension('ThinkAM.aspnetzeroextensions').extensionPath + '/templates/' + templatefileName)
-        .then((doc: vscode.TextDocument) => {
+        .then((doc: vscode.TextDocument) => {            
             let text = doc.getText();
             text = text.replace('${namespace}', namespace);
             text = text.replace('${classname}', filename);
             let cursorPosition = findCursorInTemlpate(text);
             text = text.replace('${cursor}', '');
+
+            if (templatefileName === 'interfaceAppService') {
+                let entityName = filename.replace('I', '').replace('AppService', '');
+                text = text.replace(/${entityname}/g, entityName);
+            }
+
+            if (templatefileName === 'createDto') {
+                let entityName = filename.replace('Create', '').replace('Dto', '');
+                text = text.replace('${entityname}', entityName);
+            }
+
+            if (templatefileName === 'dtoClass') {
+                let entityName = filename.replace('Dto', '');
+                text = text.replace('${entityname}', entityName);
+            }
+
             fs.writeFileSync(originalfilepath, text);
 
             vscode.workspace.openTextDocument(originalfilepath).then((doc) => {
