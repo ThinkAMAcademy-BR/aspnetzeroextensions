@@ -4,7 +4,7 @@
     "description": "Asp.Net Zero IDE Extensions for VSCode",
     "author": "Felipe A. de Almeida",
     "license": "SEE LICENSE IN license.txt",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "publisher": "ThinkAM",
     "engines": {
         "vscode": "^1.5.0"
