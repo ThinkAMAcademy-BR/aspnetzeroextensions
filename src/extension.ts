@@ -160,19 +160,19 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
             let cursorPosition = findCursorInTemlpate(text);
             text = text.replace('${cursor}', '');
 
-            if (templatefileName === 'classAppService') {
+            if (type === 'classAppService') {
                 let entityName = filename.replace('AppService', '');
                 text = text.replace(/[${}]/g, '').replace(/entityname/g, entityName);
                 let entityNameCamelCase = entityName.replace(/\w+/g,
                     function(w){return w[0].toUpperCase() + w.slice(1).toLowerCase();});
                 text = text.replace(/[${}]/g, '').replace(/entitynameCamelCase/g, entityNameCamelCase);
-            } else if (templatefileName === 'interfaceAppService') {
+            } else if (type === 'interfaceAppService') {
                 let entityName = filename.replace('I', '').replace('AppService', '');
                 text = text.replace(/[${}]/g, '').replace(/entityname/g, entityName);
-            } else if (templatefileName === 'createDto') {
+            } else if (type === 'createDto') {
                 let entityName = filename.replace('Create', '').replace('Dto', '');
                 text = text.replace('${entityname}', entityName);
-            } else if (templatefileName === 'dtoClass') {
+            } else if (type === 'dtoClass') {
                 let entityName = filename.replace('Dto', '');
                 text = text.replace('${entityname}', entityName);
             }
