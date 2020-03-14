@@ -31,6 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     //context.subscriptions.push(disposable);
     context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createClass', createClass));
+    context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.generateCreateDtoClass', generateCreateDtoClass));
     context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createInterface', createInterface));
 
     const codeActionProvider = new CodeActionProvider();
@@ -40,6 +41,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 function createClass(args) {
     promptAndSave(args, 'class');
+}
+
+function generateCreateDtoClass(args) {
+    promptAndSave(args, 'createDto');
 }
 
 function createInterface(args) {
