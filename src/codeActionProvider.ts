@@ -3,8 +3,8 @@ import *  as vscode from 'vscode';
 
 export default class CodeActionProvider implements vscode.CodeActionProvider{
     private _commandIds = {
-        ctorFromProperties: 'csharpextensions.ctorFromProperties',
-        initializeMemberFromCtor: 'csharpextensions.initializeMemberFromCtor',
+        ctorFromProperties: 'aspnetzeroextensions.ctorFromProperties',
+        initializeMemberFromCtor: 'aspnetzeroextensions.initializeMemberFromCtor',
     };
     
     constructor() {         
@@ -78,7 +78,7 @@ export default class CodeActionProvider implements vscode.CodeActionProvider{
         edits.push(ctorEdit)
         edit.set(args.document.uri, edits);
         
-        let reFormatAfterChange = vscode.workspace.getConfiguration().get('csharpextensions.reFormatAfterChange', true);
+        let reFormatAfterChange = vscode.workspace.getConfiguration().get('aspnetzeroextensions.reFormatAfterChange', true);
         let applyPromise = vscode.workspace.applyEdit(edit)
         
         if(reFormatAfterChange){
@@ -187,7 +187,7 @@ export default class CodeActionProvider implements vscode.CodeActionProvider{
         
         edit.set(args.document.uri, edits);
         
-        var reFormatAfterChange = vscode.workspace.getConfiguration().get('csharpextensions.reFormatAfterChange', true);
+        var reFormatAfterChange = vscode.workspace.getConfiguration().get('aspnetzeroextensions.reFormatAfterChange', true);
         var applyPromise = vscode.workspace.applyEdit(edit);
 
         if(reFormatAfterChange){
@@ -233,8 +233,8 @@ export default class CodeActionProvider implements vscode.CodeActionProvider{
         }
         
         var tabSize = vscode.workspace.getConfiguration().get('editor.tabSize', 4);
-        var privateMemberPrefix = vscode.workspace.getConfiguration().get('csharpextensions.privateMemberPrefix', '');
-        var prefixWithThis = vscode.workspace.getConfiguration().get('csharpextensions.useThisForCtorAssignments', true);
+        var privateMemberPrefix = vscode.workspace.getConfiguration().get('aspnetzeroextensions.privateMemberPrefix', '');
+        var prefixWithThis = vscode.workspace.getConfiguration().get('aspnetzeroextensions.useThisForCtorAssignments', true);
 
         let memberGeneration:MemberGenerationProperties = null;
         let title = "";

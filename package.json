@@ -18,23 +18,23 @@
     ],
     "activationEvents": [
         "onLanguage:csharp",
-        "onCommand:csharpextensions.createClass",
-        "onCommand:csharpextensions.generateCreateDtoClass",
-        "onCommand:csharpextensions.createInterface"
+        "onCommand:aspnetzeroextensions.createClass",
+        "onCommand:aspnetzeroextensions.generateCreateDtoClass",
+        "onCommand:aspnetzeroextensions.createInterface"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "csharpextensions.createClass",
+                "command": "aspnetzeroextensions.createClass",
                 "title": "New C# Class"
             },
             {
-                "command": "csharpextensions.generateCreateDtoClass",
+                "command": "aspnetzeroextensions.generateCreateDtoClass",
                 "title": "New C# Create Dto Class"
             },
             {
-                "command": "csharpextensions.createInterface",
+                "command": "aspnetzeroextensions.createInterface",
                 "title": "New C# Interface"
             }
         ],
@@ -42,32 +42,32 @@
             "explorer/context": [
                 {
                     "group": "navigation@-1",
-                    "command": "csharpextensions.createClass"
+                    "command": "aspnetzeroextensions.createClass"
                 },
                 {
                     "group": "navigation@-1",
-                    "command": "csharpextensions.generateCreateDtoClass"
+                    "command": "aspnetzeroextensions.generateCreateDtoClass"
                 },
                 {
                     "group": "navigation@-1",
-                    "command": "csharpextensions.createInterface"
+                    "command": "aspnetzeroextensions.createInterface"
                 }
             ]
         },
         "configuration": {
             "title": "C# Extensions configuration",
             "properties": {
-                "csharpextensions.privateMemberPrefix": {
+                "aspnetzeroextensions.privateMemberPrefix": {
                     "type": "string",
                     "default": "",
                     "description": "Prefix for generated private member declarations"
                 },
-                "csharpextensions.useThisForCtorAssignments": {
+                "aspnetzeroextensions.useThisForCtorAssignments": {
                     "type": "boolean",
                     "default": true,
                     "description": "Wether or not a ctor assignment of a property or variable should be prefixed with this."
                 },
-                "csharpextensions.reFormatAfterChange": {
+                "aspnetzeroextensions.reFormatAfterChange": {
                     "type": "boolean",
                     "default": true,
                     "description": "If true the document will be reformatted after codeactions are used."

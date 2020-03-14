@@ -30,9 +30,9 @@ export function activate(context: vscode.ExtensionContext) {
     // });
 
     //context.subscriptions.push(disposable);
-    context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createClass', createClass));
-    context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.generateCreateDtoClass', generateCreateDtoClass));
-    context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createInterface', createInterface));
+    context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createClass', createClass));
+    context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.generateCreateDtoClass', generateCreateDtoClass));
+    context.subscriptions.push(vscode.commands.registerCommand('aspnetzeroextensions.createInterface', createInterface));
 
     const codeActionProvider = new CodeActionProvider();
     let disposable = vscode.languages.registerCodeActionsProvider(documentSelector, codeActionProvider);
@@ -137,7 +137,7 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
 
     let templatefileName = type + '.tmpl';
 
-    vscode.workspace.openTextDocument(vscode.extensions.getExtension('jchannon.csharpextensions').extensionPath + '/templates/' + templatefileName)
+    vscode.workspace.openTextDocument(vscode.extensions.getExtension('jchannon.aspnetzeroextensions').extensionPath + '/templates/' + templatefileName)
         .then((doc: vscode.TextDocument) => {
             let text = doc.getText();
             text = text.replace('${namespace}', namespace);
