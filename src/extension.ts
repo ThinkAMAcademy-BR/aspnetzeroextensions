@@ -163,8 +163,7 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
             if (type === 'classAppService') {
                 let entityName = filename.replace('AppService', '');
                 text = text.replace(/EntityName/g, entityName);
-                let entityNameCamelCase = entityName.replace(/\w+/g,
-                    function(w){return w[0].toUpperCase() + w.slice(1).toLowerCase();});
+                let entityNameCamelCase = camelize(entityName);
                 text = text.replace(/entityNameCamelCase/g, entityNameCamelCase);
             } else if (type === 'interfaceAppService') {
                 let entityName = filename.replace('I', '').replace('AppService', '');
@@ -186,6 +185,13 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
                 });
             });
         });
+}
+
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
+      if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+      return index === 0 ? match.toLowerCase() : match.toUpperCase();
+    });
 }
 
 function findCursorInTemlpate(text: string) {
