@@ -162,13 +162,13 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
 
             if (type === 'classAppService') {
                 let entityName = filename.replace('AppService', '');
-                text = text.replace(/[${}]/g, '').replace(/entityname/g, entityName);
+                text = text.replace(/EntityName/g, entityName);
                 let entityNameCamelCase = entityName.replace(/\w+/g,
                     function(w){return w[0].toUpperCase() + w.slice(1).toLowerCase();});
-                text = text.replace(/[${}]/g, '').replace(/entitynameCamelCase/g, entityNameCamelCase);
+                text = text.replace(/entityNameCamelCase/g, entityNameCamelCase);
             } else if (type === 'interfaceAppService') {
                 let entityName = filename.replace('I', '').replace('AppService', '');
-                text = text.replace(/[${}]/g, '').replace(/entityname/g, entityName);
+                text = text.replace(/EntityName/g, entityName);
             } else if (type === 'createDto') {
                 let entityName = filename.replace('Create', '').replace('Dto', '');
                 text = text.replace('${entityname}', entityName);

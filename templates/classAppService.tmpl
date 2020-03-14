@@ -7,12 +7,12 @@ namespace ${namespace}
 {
     using Dto;
 
-    public class ${classname}: AsyncCrudAppService<${entityname}, ${entityname}Dto, Guid, PagedResultRequestDto, Create${entityname}Dto, ${entityname}Dto>, I${entityname}AppService
+    public class ${classname}: AsyncCrudAppService<EntityName, EntityNameDto, Guid, PagedResultRequestDto, CreateEntityNameDto, EntityNameDto>, IEntityNameAppService
     {
-        private readonly IRepository<${entityname}, Guid> _${entitynameCamelCase}Repository;    
+        private readonly IRepository<EntityName, Guid> _entityNameCamelCaseRepository;    
 
-        public ${entityname}AppService(IRepository<${entityname}, Guid> ${entitynameCamelCase}Repository) 
-            :base(${entitynameCamelCase}Repository)
+        public EntityNameAppService(IRepository<EntityName, Guid> entityNameCamelCaseRepository) 
+            :base(entityNameCamelCaseRepository)
         {
             ${cursor}
         }
