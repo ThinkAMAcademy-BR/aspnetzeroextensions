@@ -2,6 +2,11 @@
 
 Welcome to Asp.Net Zero Extensions.  This VSCode extension provides extensions to the IDE that will hopefully speed up your development workflow.
 
+## Think Academy
+
+**C# Quiz**
+[Fill out](https://bit.ly/formtocsharpquiz) and receive 
+
 ## Features
 
 **Add C# Class**
